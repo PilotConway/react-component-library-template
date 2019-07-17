@@ -1,0 +1,60 @@
+Arguments: 
+  /usr/local/Cellar/node/12.1.0/bin/node /usr/local/Cellar/yarn/1.15.2/libexec/bin/yarn.js
+
+PATH: 
+  /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Apple/usr/bin:/Library/Apple/bin:/opt/X11/bin
+
+Yarn version: 
+  1.15.2
+
+Node version: 
+  12.1.0
+
+Platform: 
+  darwin x64
+
+Trace: 
+  SyntaxError: /Users/PilotConway/Projects/react-component-library-template/package.json: Unexpected token } in JSON at position 1190
+      at JSON.parse (<anonymous>)
+      at /usr/local/Cellar/yarn/1.15.2/libexec/lib/cli.js:1625:59
+      at Generator.next (<anonymous>)
+      at step (/usr/local/Cellar/yarn/1.15.2/libexec/lib/cli.js:304:30)
+      at /usr/local/Cellar/yarn/1.15.2/libexec/lib/cli.js:315:13
+
+npm manifest: 
+  {
+    "name": "@<org>/<package>",
+    "productName": "<package>",
+    "version": "0.1.0",
+    "type": "module",
+    "main": "dist/index.js",
+    "module": "dist/esm/index.js",
+    "publishConfig": {
+      "registry": "https://npm.pkg.github.com/"
+    },
+    "files": [
+      "dist"
+    ],
+    "dependencies": {
+    },
+    "devDependencies": {
+      "@babel/cli": "^7.0.0",
+      "rollup": "^1.11.3",
+      "rollup-plugin-terser": "^4.0.4"
+    },
+    "scripts": {
+      "build": "yarn build:cjs && yarn build:esm && yarn build:es && yarn build:umd && yarn copy-files",
+      "build:cjs": "cross-env NODE_ENV=production BABEL_ENV=cjs babel --config-file ../../babel.config.js ./src --out-dir ./dist --ignore \"**/*.spec.js\"",
+      "build:esm": "cross-env NODE_ENV=production BABEL_ENV=esm babel --config-file ../../babel.config.js ./src --out-dir ./dist/esm --ignore \"**/*.spec.js\"",
+      "build:es": "cross-env NODE_ENV=production BABEL_ENV=es babel --config-file ../../babel.config.js ./src --out-dir ./dist/es --ignore \"**/*.spec.js\"",
+      "build:umd": "cross-env BABEL_ENV=production-umd rollup -c ./rollup.config.js",
+      "copy-files": "node ./scripts/copy-files.js",
+      "dist:clean": "rm -rf dist/ && rm -rf node_modules/",
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
